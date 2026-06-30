@@ -1,5 +1,15 @@
 <?php
 require_once dirname(__DIR__) . '/src/bootstrap.php';
+
+$introCookieName = 'seen_intro_pages';
+if (!empty($_COOKIE[$introCookieName])) {
+    header('Location: bounty.php');
+    exit;
+}
+
+if (isset($_GET['from_rules'])) {
+    setcookie($introCookieName, '1', time() + (60 * 60 * 24 * 365 * 1000), '/');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +30,7 @@ require_once dirname(__DIR__) . '/src/bootstrap.php';
                 Welcome to the Game Dev Bounty Board.<br>
                 Here you can explore exciting challenges, earn rewards, and join a creative community built around teamwork, growth, and meaningful achievements.
             </p>
-            <a href="bounty.php" class="next-button" aria-label="Next">
+            <a href="bounty.php?from_welcome=1" class="next-button" aria-label="Next">
                 Next <span aria-hidden="true">→</span>
             </a>
         </section>

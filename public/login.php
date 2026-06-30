@@ -1,6 +1,8 @@
 <?php
 require_once dirname(__DIR__) . '/src/bootstrap.php';
 
+$avatarUrl = getUserAvatarUrl($pdo, $_SESSION['user_id'] ?? null);
+
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -41,12 +43,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
 </head>
-<body class="bounty-page">
+<body class="bounty-page" style="--app-outline-color: <?= htmlspecialchars(getUserOutlineColor($pdo, $_SESSION['user_id'] ?? null), ENT_QUOTES, 'UTF-8') ?>;">
     <header class="topbar">
-        <a href="register.php" class="brand-mark" aria-label="Go to register"></a>
+        <a href="register.php" class="brand-mark" aria-label="Go to register">
+            <img src="<?= htmlspecialchars($avatarUrl, ENT_QUOTES, 'UTF-8') ?>" alt="Profile picture">
+        </a>
         <nav class="topnav">
             <a href="leaderboard.php">leaderbord</a>
             <a href="bounty.php">bounty</a>
+            <a href="guilds.php">guilds</a>
             <a href="login.php">login</a>
         </nav>
     </header>

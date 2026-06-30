@@ -1,5 +1,11 @@
 <?php
 require_once dirname(__DIR__) . '/src/bootstrap.php';
+
+$introCookieName = 'seen_intro_pages';
+if (!empty($_COOKIE[$introCookieName])) {
+    header('Location: bounty.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -21,7 +27,7 @@ require_once dirname(__DIR__) . '/src/bootstrap.php';
                 Do not discriminate in your text, and do not use racist language or behaviour.<br>
                 Do not post images that violate these rules or could easily offend others.
             </p>
-            <a href="welcome.php" class="next-button" aria-label="Next">
+            <a href="welcome.php?from_rules=1" class="next-button" aria-label="Next">
                 Next <span aria-hidden="true">→</span>
             </a>
         </section>

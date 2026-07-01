@@ -208,13 +208,144 @@ body {
     display: block;
 }
 
+.profile-badges-panel {
+    position: absolute;
+    left: 380px;
+    top: 128px;
+    width: 260px;
+}
+
+.profile-badges-panel .profile-card {
+    width: 100%;
+}
+
 .profile-info-stack {
     position: absolute;
     left: 655px;
-    top: 149px;
+    top: 128px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+@media (max-width: 900px) {
+    .profile-shell {
+        position: static;
+        min-height: auto;
+        padding: 90px 16px 40px;
+    }
+
+    .profile-avatar {
+        position: static;
+        margin: 0 auto;
+        left: auto;
+        top: auto;
+        width: 180px;
+        height: 180px;
+        border: 3px solid #000000;
+    }
+
+    .profile-badges-panel,
+    .profile-info-stack,
+    .leaderboard-row,
+    .profile-outlines-panel,
+    .profile-history-panel {
+        position: static;
+        left: auto;
+        top: auto;
+        width: 100%;
+        max-width: 760px;
+        margin: 20px auto 0;
+        box-sizing: border-box;
+    }
+
+    .profile-badges-panel {
+        margin-top: 18px;
+    }
+
+    .profile-badges-panel .profile-card,
+    .profile-info-stack .profile-card,
+    .profile-outlines-panel,
+    .profile-history-panel,
+    .leaderboard-row {
+        width: 100%;
+        max-width: none;
+    }
+
+    .profile-badges-panel .profile-card,
+    .profile-info-stack .profile-card,
+    .profile-outlines-panel,
+    .profile-history-panel,
+    .leaderboard-row {
+        margin: 0;
+    }
+
+    .profile-info-stack {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .profile-card {
+        width: 100%;
+        min-height: auto;
+        padding-left: 20px;
+        font-size: 28px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile-badges-block {
+        padding: 14px 16px;
+    }
+
+    .profile-badges-header {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .profile-badge-pill {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    .avatar-form label,
+    .avatar-form input,
+    .avatar-form button,
+    .avatar-upload-message {
+        font-size: 18px;
+    }
+
+    .avatar-form {
+        padding: 10px 20px 12px 20px;
+    }
+
+    .leaderboard-row,
+    .profile-outlines-panel,
+    .profile-history-panel {
+        box-sizing: border-box;
+        padding: 20px;
+        background: #6FA5D4;
+        border: 2px solid #000000;
+        border-radius: 10px;
+        color: #ffffff;
+    }
+
+    .leaderboard-row {
+        width: 100%;
+        height: auto;
+        font-size: 28px;
+        padding-left: 20px;
+    }
+
+    .profile-outlines-panel {
+        width: 100%;
+    }
+
+    .profile-history-panel {
+        width: 100%;
+    }
 }
 
 .profile-card {
@@ -230,6 +361,52 @@ body {
     display: flex;
     align-items: center;
     border: 2px solid #000000;
+}
+
+.profile-badges-block {
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 18px;
+    min-height: 50px;
+}
+
+.profile-badges-header {
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.profile-badges-inline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 100%;
+}
+
+.profile-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    padding: 8px 14px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.profile-badge-empty {
+    opacity: 0.78;
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .avatar-form {
@@ -326,6 +503,40 @@ body {
     font-family: 'Hanuman', serif;
     font-size: 36px;
     font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .leaderboard-row,
+    .profile-outlines-panel,
+    .profile-history-panel {
+        position: static !important;
+        left: auto !important;
+        top: auto !important;
+        width: 100% !important;
+        max-width: 760px !important;
+        margin: 20px auto 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .leaderboard-row {
+        height: auto !important;
+        padding-left: 20px !important;
+        padding-top: 18px !important;
+        padding-bottom: 18px !important;
+        font-size: 28px !important;
+    }
+
+    .profile-outlines-panel,
+    .profile-history-panel {
+        height: auto !important;
+        padding: 20px !important;
+        border-radius: 10px;
+    }
+
+    .profile-outlines-panel h2,
+    .profile-history-panel h2 {
+        font-size: 28px !important;
+    }
 }
 
 .history-list {
@@ -525,6 +736,7 @@ body {
     display: grid;
     place-items: center;
     padding: 24px;
+    background: linear-gradient(-90deg, #30ABF7 99.99%, #4C588E 100%);
 }
 
 .rules-box {
@@ -532,24 +744,31 @@ body {
     height: 508px;
     max-width: 100%;
     border: 5px solid #000000;
-    box-sizing: border-box;
-    padding: 30px 30px 30px 30px;
-    position: relative;
+    border-radius: 10px;
     background: #6FA5D4;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 30px;
+    position: relative;
 }
 
 .rules-box h1 {
-    margin: 0;
-    font-family: 'Hanuman', serif;
+    margin: 0 auto;
+    width: min(139px, 100%);
+    font-family: 'Inter', sans-serif;
     font-size: 48px;
     line-height: 1.2;
+    text-align: center;
+    color: #000000;
 }
 
 .rules-text {
-    margin-top: 30px;
-    font-family: 'Hanuman', serif;
+    margin: 30px 0 0;
+    font-family: 'Inter', sans-serif;
     font-size: 30px;
     line-height: 1.4;
+    color: #000000;
+    word-break: break-word;
     max-width: 1000px;
 }
 
@@ -566,6 +785,7 @@ body {
     gap: 8px;
     text-decoration: none;
     color: #000000;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-weight: 700;
     background: #6FA5D4;
@@ -573,6 +793,71 @@ body {
 
 .next-button:hover {
     background: #5f93bf;
+}
+
+@media (max-width: 1024px) {
+    .rules-box {
+        width: min(90vw, 700px);
+        height: 560px;
+        padding: 25px;
+    }
+
+    .rules-box h1 {
+        font-size: 36px;
+    }
+
+    .rules-text {
+        font-size: 22px;
+    }
+
+    .next-button {
+        width: 130px;
+        height: 55px;
+        font-size: 18px;
+        right: 15px;
+        bottom: 15px;
+    }
+}
+
+@media (max-width: 640px) {
+    .rules-box {
+        width: 235px;
+        height: 660px;
+        margin-top: 92px;
+        padding: 0;
+    }
+
+    .rules-box h1 {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 17px;
+        margin: 0;
+        width: 139px;
+        font-size: 20px;
+    }
+
+    .rules-text {
+        position: absolute;
+        top: 69px;
+        left: 15px;
+        width: 196px;
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.4;
+    }
+
+    .next-button {
+        position: absolute;
+        left: 69px;
+        top: 609px;
+        width: 87px;
+        height: 37px;
+        font-size: 20px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 0;
+    }
 }
 
 .bounty-page {
@@ -590,6 +875,42 @@ body {
     padding: 0 24px 0 16px;
     box-sizing: border-box;
     position: relative;
+}
+
+@media (max-width: 820px) {
+    .topbar {
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        padding: 12px 16px;
+        gap: 12px;
+    }
+
+    .topnav {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding: 0;
+    }
+
+    .topnav a {
+        font-size: 16px;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 640px) {
+    .topbar {
+        padding: 12px 12px;
+    }
+
+    .topnav a {
+        font-size: 14px;
+        padding: 6px 8px;
+    }
 }
 
 .brand-mark {
@@ -765,14 +1086,20 @@ body {
 
 .guilds-card-header {
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 20px;
+    gap: 24px;
     margin-bottom: 20px;
     background: #6FA5D4;
     border: 5px solid #000000;
     border-radius: 10px;
     padding: 19px 28px;
+}
+
+.guilds-card-header > div:first-child {
+    flex: 1 1 0;
+    min-width: 0;
 }
 
 .guilds-user-status {
@@ -781,11 +1108,16 @@ body {
     gap: 6px;
     background: #82C1FF;
     border: 2px solid #000000;
-    padding: 10px 14px;
+    padding: 10px 18px;
     border-radius: 10px;
     font-family: 'Hanuman', serif;
     font-size: 18px;
-    white-space: nowrap;
+    white-space: normal;
+    word-break: break-word;
+    min-width: 0;
+    width: min(100%, 260px);
+    max-width: 260px;
+    flex: 0 1 auto;
 }
 
 .xp-ready {
@@ -1021,14 +1353,28 @@ body {
 
 
 .leaderboard-main {
-    width: min(1200px, 100%);
+    width: min(760px, 100%);
+    max-width: 760px;
     margin: 0 auto;
     padding: 113px 24px 40px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.leaderboard-banner,
+.leaderboard {
+    width: 100%;
+    margin: 0 auto;
 }
 
 .leaderboard-banner {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     min-height: 146px;
     background: #6FA5D4;
     border: 5px solid #000000;
@@ -1062,9 +1408,8 @@ body {
 }
 
 .leaderboard-card {
-    position: relative;
     background-color: #6FA5D4;
-    height: 115px;
+    min-height: 115px;
     width: 100%;
     border-radius: 10px;
     border: 5px solid black;
@@ -1073,38 +1418,48 @@ body {
     font-weight: 500;
     font-size: 40px;
     color: black;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 24px;
+    box-sizing: border-box;
 }
 
 .leaderboard-medal {
-    position: absolute;
-    left: 0;
-    top: 9px;
-    height: 99px;
-    width: auto;
+    position: static;
+    width: 99px;
+    height: auto;
     object-fit: contain;
     pointer-events: none;
+    flex-shrink: 0;
 }
 
-.leaderboard-name {
-    position: absolute;
-    left: 94px;
-    top: 33px;
+.leaderboard-name,
+.leaderboard-xp {
+    position: static;
+    display: block;
+    margin: 0;
+    width: auto;
+    min-width: 0;
+    overflow-wrap: break-word;
 }
 
 .leaderboard-xp {
-    position: absolute;
-    left: 669px;
-    top: 33px;
+    flex: 0 0 auto;
+}
+
+.leaderboard-name {
+    flex: 1 1 0;
 }
 
 .leaderboard-card.rank-4 .leaderboard-name,
-.leaderboard-card.rank-5 .leaderboard-name {
-    left: 54px;
-}
-
+.leaderboard-card.rank-5 .leaderboard-name,
 .leaderboard-card.rank-4 .leaderboard-xp,
 .leaderboard-card.rank-5 .leaderboard-xp {
-    left: 669px;
+    left: auto;
+    top: auto;
 }
 
 .bounty-grid-wrap {
@@ -1116,6 +1471,177 @@ body {
     grid-template-columns: repeat(3, minmax(0, 335px));
     gap: 40px 40px;
     justify-content: center;
+}
+
+@media (max-width: 1024px) {
+    .leaderboard-main {
+        padding: 90px 20px 40px;
+    }
+
+    .leaderboard-banner {
+        padding: 16px 20px;
+        min-height: 130px;
+    }
+
+    .leaderboard-banner h1 {
+        font-size: 28px;
+    }
+
+    .leaderboard-banner p {
+        font-size: 18px;
+    }
+
+    .leaderboard-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px;
+        min-height: 115px;
+        height: auto;
+    }
+
+    .leaderboard-medal {
+        position: static;
+        width: 76px;
+        height: auto;
+        margin-right: 16px;
+    }
+
+    .leaderboard-name,
+    .leaderboard-xp {
+        position: static;
+        display: block;
+        left: auto;
+        top: auto;
+        width: auto;
+        margin: 0;
+    }
+
+    .leaderboard-card.rank-4 .leaderboard-name,
+    .leaderboard-card.rank-5 .leaderboard-name,
+    .leaderboard-card.rank-4 .leaderboard-xp,
+    .leaderboard-card.rank-5 .leaderboard-xp {
+        left: auto;
+    }
+
+    .leaderboard-card {
+        font-size: 24px;
+    }
+
+    .guilds-shell {
+        padding: 90px 20px 40px;
+    }
+
+    .guilds-card {
+        padding: 20px;
+    }
+
+    .guilds-card-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .guilds-user-status {
+        width: 100%;
+    }
+
+    .guilds-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .leaderboard-main {
+        padding: 80px 16px 28px;
+    }
+
+    .leaderboard-banner h1 {
+        font-size: 24px;
+    }
+
+    .leaderboard-banner p {
+        font-size: 16px;
+    }
+
+    .leaderboard-card {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .leaderboard-medal {
+        width: 64px;
+    }
+
+    .leaderboard-name {
+        font-size: 18px;
+    }
+
+    .leaderboard-xp {
+        font-size: 16px;
+    }
+
+    .guilds-shell {
+        padding: 70px 16px 24px;
+    }
+
+    .guilds-card {
+        padding: 16px;
+    }
+
+    .guilds-card-header {
+        padding: 16px;
+    }
+
+    .guilds-card h1 {
+        font-size: 36px;
+    }
+
+    .guilds-card p {
+        font-size: 18px;
+    }
+
+    .guilds-user-status {
+        font-size: 16px;
+    }
+
+    .guild-list-item {
+        padding: 12px;
+        min-height: auto;
+    }
+
+    .guild-list-main strong {
+        font-size: 18px;
+    }
+
+    .guilds-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .guilds-detail-panel {
+        order: -1;
+    }
+
+    .guild-list-meta {
+        font-size: 14px;
+        align-items: flex-start;
+    }
+
+    .guild-detail-card,
+    .guild-create-card {
+        padding: 12px;
+    }
+
+    .bounty-grid-wrap {
+        padding: 92px 16px 40px;
+        overflow-x: auto;
+    }
+
+    .bounty-grid {
+        grid-template-columns: repeat(auto-fit, 335px);
+        justify-content: center;
+    }
 }
 
 .bounty-card {

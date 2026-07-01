@@ -75,12 +75,18 @@ if (!$user) {
 }
 
 $bountyCount = 0;
+$hardBountyCompleted = false;
 try {
     $countStmt = $pdo->prepare('SELECT COUNT(*) FROM gdbb_bounty_submissions WHERE user_id = ? AND approved = 1');
     $countStmt->execute([$userId]);
     $bountyCount = (int)$countStmt->fetchColumn();
+
+    $hardCountStmt = $pdo->prepare('SELECT COUNT(*) FROM gdbb_bounty_submissions bs INNER JOIN gdbb_bounties b ON b.id = bs.bounty_id WHERE bs.user_id = ? AND bs.approved = 1 AND LOWER(b.difficulty) = ?');
+    $hardCountStmt->execute([$userId, 'hard']);
+    $hardBountyCompleted = ((int)$hardCountStmt->fetchColumn() > 0);
 } catch (PDOException $e) {
     $bountyCount = 0;
+    $hardBountyCompleted = false;
 }
 
 $leaderboardPlace = 1;
@@ -132,6 +138,29 @@ try {
         <div class="profile-avatar">
             <img src="<?= htmlspecialchars($avatarUrl, ENT_QUOTES, 'UTF-8') ?>" alt="Profile picture">
         </div>
+
+        <section class="profile-badges-panel">
+            <div class="profile-card profile-badges-block">
+                <div class="profile-badges-header">badges</div>
+                <div class="profile-badges-inline">
+                    <?php if ($bountyCount >= 1): ?>
+                        <span class="profile-badge-pill">Eerste bounty voltooid</span>
+                    <?php endif; ?>
+                    <?php if ($bountyCount >= 5): ?>
+                        <span class="profile-badge-pill">5 bounties voltooid</span>
+                    <?php endif; ?>
+                    <?php if ((int)$user['level'] >= 5): ?>
+                        <span class="profile-badge-pill">Level 5 bereikt</span>
+                    <?php endif; ?>
+                    <?php if ($hardBountyCompleted): ?>
+                        <span class="profile-badge-pill">Hard bounty voltooid</span>
+                    <?php endif; ?>
+                    <?php if ($bountyCount < 1 && (int)$user['level'] < 5 && !$hardBountyCompleted): ?>
+                        <span class="profile-badge-pill profile-badge-empty">Nog geen mijlpalen</span>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </section>
 
         <section class="profile-info-stack">
             <div class="profile-card">name: <?= htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8') ?></div>
